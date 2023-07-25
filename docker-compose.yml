@@ -1,0 +1,19 @@
+version: '3'
+services:
+  app:
+    image: ${PROJECT_NAME}:${IMAGE_VERSION}
+    build:
+      context: .
+      args:
+        UID: ${UID}
+        GID: ${GID}
+        USERNAME: ${USERNAME}
+        GROUPNAME: ${GROUPNAME}
+        WORKDIR: ${WORKDIR}
+        PYTHON_IMAGE_TAG: ${PYTHON_IMAGE_TAG}
+    volumes:
+        - ./:${WORKDIR}
+    restart: always
+    ports: 
+      - 50000:50000
+    tty: true
